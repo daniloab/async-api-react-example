@@ -1,0 +1,26 @@
+{
+  "asyncapi": "2.0.0",
+  "info": {
+    "title": "Entria Event Driven",
+    "version": "1.0.0"
+  },
+  "description": "Entria event driven docs",
+  "channels": {
+    "OPENPIX.PAYMENT_SUBSCRIPTION.INSTALLMENT_GENERATE_CHARGE": {
+      "description": "Generate charge for a given Payment Subscription Installment",
+      "publish": {
+        "message": {
+          "paymentSubscriptionInstallmentId": {
+            "type": "string",
+            "description": "Payment Susbcription Installment Id with info necessary to generate it charge"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {},
+  "responses": {},
+  "parameters": {},
+  "securityDefinitions": {},
+  "tags": []
+}
