@@ -8,7 +8,7 @@ src
     asyncApiHeaderConfig.js
     asyncApiHeaderConfig.yml
   asyncapi
-    AsyncApi.tsx // asyncapi react component
+    AsyncApi.tsx // asyncapi react component that consume 
   modules
       userSignUp
         userSignUp.ts
@@ -21,21 +21,46 @@ src
 ### userSignUp.yaml
 ```yaml
 channels:
-  user/signUp:
-    description: Event of user signUp
-    parameters:
-      userId:
-        $ref: '#/components/parameters/userId'
+  user/signedup:
+    subscribe:
+      message:
+        $ref: '#/components/messages/UserSignedUp'
+components:
+  messages:
+    UserSignedUp:
+      payload:
+        type: object
+        properties:
+          displayName:
+            type: string
+            description: Name of the user
+          email:
+            type: string
+            format: email
+            description: Email of the user
 ```
 
 ### userSignIn.yaml
 ```yaml
 channels:
-  user/signIn:
-    description: Event of user signIn
-    parameters:
-      userId:
-        $ref: '#/components/parameters/userId'
+  user/signedin:
+    subscribe:
+      message:
+        $ref: '#/components/messages/UserSignedIn'
+components:
+  messages:
+    UserSignedIn:
+      payload:
+        type: object
+        properties:
+          displayName:
+            type: string
+            description: Name of the user
+          email:
+            type: string
+            format: email
+            description: Email of the user
+
 ```
 
 ### async api header info (asyncapiHeader.yaml)
@@ -72,22 +97,49 @@ info:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0
 channels:
-  user/signUp:
-    description: Event of user signUp
-    parameters:
-      userId:
-        $ref: '#/components/parameters/userId'
-  user/signIn:
-    description: Event of user signIn
-    parameters:
-      userId:
-        $ref: '#/components/parameters/userId'
+  user/signedup:
+    subscribe:
+      message:
+        $ref: '#/components/messages/UserSignedUp'
+  user/signedin:
+    subscribe:
+      message:
+        $ref: '#/components/messages/UserSignedIn'
+components:
+  messages:
+    UserSignedUp:
+      payload:
+        type: object
+        properties:
+          displayName:
+            type: string
+            description: Name of the user
+          email:
+            type: string
+            format: email
+            description: Email of the user
+    UserSignedIn:
+      payload:
+        type: object
+        properties:
+          displayName:
+            type: string
+            description: Name of the user
+          email:
+            type: string
+            format: email
+            description: Email of the user
 ```
 
 ## What I have tried
 I've been tried to use the `swagger-jsdoc` to generate this final file for me. This workflow's very similar to the workflow for our redoc apis.
 
-But, for now, we wantna go forward with forward with AsyncAPI to make better and robust our event drive.
+The final result being generated is an error: `TypeError: Cannot read property 'messages' of undefined`
+
+So, I think that the swagger-jsdoc does not support this schema of channels.
+
+### How can I do this?
+But, for now, we want to go forward with AsyncAPI to make better and robust our event drive.
 
 Here an example of the generate function that we are trying to implement to generate this: https://gist.github.com/daniloab/cf74e58e2e7bfff828d8ad20c50cb2d4
 

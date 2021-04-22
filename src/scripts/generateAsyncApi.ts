@@ -37,23 +37,17 @@ const runProcess = async (
 const generateAsyncApi = async () => {
   const command = "yarn";
 
-  const workerPackage = "./packages/events/";
+  const workerPackage = "./";
 
   const asyncApiConfig = "./src/asyncApi/asyncApiHeaderConfig.js";
 
   const workerPath = path.join(cwd, workerPackage);
   const asyncApiConfigPath = path.join(workerPath, asyncApiConfig);
 
-  const userSignUpPath = path.join(
-    cwd,
-    "./packages/events/src/modules/user/userSignUp"
-  );
+  const userSignUpPath = path.join(cwd, "./src/modules/userSignUp");
   const userSignUpPathRegex = `${userSignUpPath}/**/*.yml`;
 
-  const userSignInPath = path.join(
-    cwd,
-    "./packages/events/src/modules/user/userSignIn"
-  );
+  const userSignInPath = path.join(cwd, "./src/modules/userSignIn");
   const userSignPathRegex = `${userSignInPath}/**/*.yml`;
 
   const args = [
@@ -65,8 +59,8 @@ const generateAsyncApi = async () => {
     "-o",
   ];
 
-  const argsYml = [...args, "./src/events/asyncApi/asyncapi.yml"];
-  const argsJson = [...args, "./src/events/asyncApi/asyncapi.json"];
+  const argsYml = [...args, "./src/asyncApi/asyncapi.yml"];
+  const argsJson = [...args, "./src/asyncApi/asyncapi.json"];
 
   await runProcess(command, argsYml, workerPath);
   await runProcess(command, argsJson, workerPath);
