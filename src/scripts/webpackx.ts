@@ -12,7 +12,7 @@ export const outputFilename = "bundle.js";
 
 const compilerRunPromise = (compiler) =>
   new Promise((resolve, reject) => {
-    compiler.run((err, stats) => {
+    compiler.run((err: unknown, stats) => {
       if (err) {
         return reject(err);
       }

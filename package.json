@@ -75,11 +75,11 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
-    "asyncapi": "yarn w ./src/scripts/generateAsyncApi.ts",
-    "b": "babel-node --extensions \".es6,.js,.es,.jsx,.mjs,.ts,.tsx\"",
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
+    "asyncapi": "DISABLE_ESLINT_PLUGIN=true yarn w ./src/scripts/generateAsyncApi.ts",
+    "b": "DISABLE_ESLINT_PLUGIN=true babel-node --extensions \".es6,.js,.es,.jsx,.mjs,.ts,.tsx\"",
+    "start": "DISABLE_ESLINT_PLUGIN=true node scripts/start.js",
+    "build": "DISABLE_ESLINT_PLUGIN=true node scripts/build.js",
+    "test": "DISABLE_ESLINT_PLUGIN=true node scripts/test.js",
     "w": "yarn b ./src/scripts/webpackx.ts"
   },
   "eslintConfig": {
@@ -162,6 +162,7 @@
   },
   "devDependencies": {
     "@babel/node": "^7.13.13",
-    "@babel/plugin-transform-modules-commonjs": "^7.13.8"
+    "@babel/plugin-transform-modules-commonjs": "^7.13.8",
+    "swagger-jsdoc": "^7.0.0-rc.6"
   }
 }
