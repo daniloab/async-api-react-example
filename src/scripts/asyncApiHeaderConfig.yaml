@@ -1,5 +1,6 @@
-asyncapi: 2.0.0
+asyncapi: '2.0.0'
+id: 'id'
 info:
-  title: Entria Event Driven
-  version: 1.0.0
-  description: Entria event driven docs
+  title: User Event API
+  version: '1.0.0'
+  description: User Event API Specification
