@@ -64,11 +64,6 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
-const cwd = process.cwd();
-
-export const outputPath = path.join(cwd, ".webpack");
-export const outputFilename = "bundle.js";
-
 const hasJsxRuntime = (() => {
   if (process.env.DISABLE_NEW_JSX_TRANSFORM === "true") {
     return false;

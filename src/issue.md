@@ -63,7 +63,7 @@ components:
 
 ```
 
-### async api header info (asyncapiHeader.yaml)
+### async api header info config (asyncapiHeader.yaml)
 ```yaml
 asyncapi: '2.0.0'
 id: 'id'
@@ -71,9 +71,6 @@ info:
   title: User Event API
   version: '1.0.0'
   description: User Event API Specification
-  license:
-    name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0
 ```
 
 So, what I'm looking for is a way to do this by a js function to generates the `.json` and `.yaml` final file with these three pieces of yaml. Without duplicating it.
@@ -81,21 +78,11 @@ So, what I'm looking for is a way to do this by a js function to generates the `
 Example final file:
 ```yaml
 asyncapi: '2.0.0'
-id: 'urn:com:smartylighting:streetlights:server'
+id: 'id'
 info:
-  title: Streetlights API
+  title: User Event API
   version: '1.0.0'
-  description: |
-    The Smartylighting Streetlights API allows you to remotely manage the city lights.
-
-    ### Check out its awesome features:
-
-    * Turn a specific streetlight on/off 🌃
-    * Dim a specific streetlight 😎
-    * Receive real-time information about environmental lighting conditions 📈
-  license:
-    name: Apache 2.0
-    url: https://www.apache.org/licenses/LICENSE-2.0
+  description: User Event API Specification
 channels:
   user/signedup:
     subscribe:
